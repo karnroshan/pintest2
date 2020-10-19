@@ -11,6 +11,6 @@ let package = Package(
         .package(url: "https://github.com/danger/swift.git", from: "3.0.0"),
     ],
     targets: [
-        .target(name: "sampleproject", dependencies: ["Danger"], path: "sampleproject"),
+        .target(name: "sampleproject", dependencies: ["Danger"], path: "sampleproject")
     ]
 )
