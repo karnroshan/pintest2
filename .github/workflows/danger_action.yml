@@ -1,16 +1,19 @@
-
-name: "Danger Swift"
+name: CI
 on: [pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    name: "Run Danger"
+    runs-on: macos-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Danger
-        uses: f-meloni/danger-swift-swiftlint-action@1.3.1
-        with:
-            args: --failOnErrors --no-publish-check
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@master
+    - name: Build
+      run: swift build
+
+    - name: Test
+      run: swift test
+
+    - name: Danger
+      run: danger-swift ci
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
