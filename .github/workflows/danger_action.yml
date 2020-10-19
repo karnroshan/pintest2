@@ -6,13 +6,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
     - name: Build
-      run: swift build
-
-    - name: Test
-      run: swift test
-
+      run: swift build -v
+      
+    - name: Run tests
+      run: swift test -v
+      
     - name: Danger
       run: danger-swift ci
       env: 
